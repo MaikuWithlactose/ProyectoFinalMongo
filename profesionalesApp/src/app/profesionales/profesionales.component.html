@@ -1,0 +1,105 @@
+<h2>Aquí puedes consultar, crear, editar y borrar profesionales:</h2>
+
+<div class="form-container">
+  <!-- Primera fila -->
+  <div class="form-row form-row-2-items">
+    <div class="form-group col-md-6">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="profesional.name" name="name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Apellido</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="profesional.lastName" name="lastName">
+    </div>
+  </div>
+
+  <!-- Segunda fila -->
+  <div class="form-row form-row-3-items">
+    <div class="form-group col-md-4">
+      <label for="age">Edad</label>
+      <input type="number" class="form-control" id="age" [(ngModel)]="profesional.age" name="age">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="weight">Peso</label>
+      <input type="number" class="form-control" id="weight" [(ngModel)]="profesional.weight" name="weight">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="height">Altura</label>
+      <input type="number" class="form-control" id="height" [(ngModel)]="profesional.height" name="height">
+    </div>
+  </div>
+
+  <!-- Tercera fila -->
+  <div class="form-row form-row-3-items">
+    <div class="form-group col-md-4">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="isRetired" [(ngModel)]="profesional.isRetired" name="isRetired">
+        <label class="form-check-label" for="isRetired">Está retirado</label>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="nationality">Nacionalidad</label>
+      <input type="text" class="form-control" id="nationality" [(ngModel)]="profesional.nationality" name="nationality">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="oscarsNumber">Número de Oscars</label>
+      <input type="number" class="form-control" id="oscarsNumber" [(ngModel)]="profesional.oscarsNumber" name="oscarsNumber">
+    </div>
+  </div>
+
+  <!-- Cuarta fila -->
+  <div class="form-row form-row-2-items">
+    <div class="form-group col-md-6">
+      <label for="profession">Profesión</label>
+      <input type="text" class="form-control" id="profession" [(ngModel)]="profesional.profession" name="profession">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="photo">Foto</label>
+      <input type="text" class="form-control" id="photo" [(ngModel)]="profesional.photo" name="photo">
+    </div>
+  </div>
+  
+    <!-- Botones -->
+  <div class="form-row form-row-4-items">
+    <div class="form-group col-md-12">
+      <button type="button" class="btn btn-primary" (click)="mostrarProfesionales()">Mostrar</button>
+      <button type="button" class="btn btn-success" (click)="crearProfesional()">Crear</button>
+      <button type="button" class="btn btn-warning" (click)="actualizarProfesional()">Actualizar</button>
+      <button type="button" class="btn btn-danger" (click)="eliminarProfesional()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Peso</th>
+      <th>Altura</th>
+      <th>Está Retirado</th>
+      <th>Nacionalidad</th>
+      <th>Número de Oscars</th>
+      <th>Profesión</th>
+      <th>Foto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let profes of profesionales; let i = index">
+      <tr [ngClass]="{ 'table-row-even': i % 2 === 0, 'table-row-odd': i % 2 !== 0 }">
+        <td>{{ profes.name }}</td>
+        <td>{{ profes.lastName }}</td>
+        <td>{{ profes.age }}</td>
+        <td>{{ profes.weight }}</td>
+        <td>{{ profes.height }}</td>
+        <td>{{ profes.isRetired ? 'Sí' : '' }}</td>
+        <td>{{ profes.nationality }}</td>
+        <td>{{ profes.oscarsNumber }}</td>
+        <td>{{ profes.profession }}</td>
+        <td>{{ profes.photo }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+  
